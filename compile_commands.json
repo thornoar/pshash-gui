@@ -1,12 +1,12 @@
 [
   {
     "arguments": [
-      "/nix/store/gj9lra51hwhxnhz05jqk5lh03wipamv0-gcc-wrapper-14-20241116/bin/g++",
+      "/nix/store/67x7pknz0qa2j16x02idf0x98lpcspah-gcc-wrapper-14.3.0/bin/g++",
       "-c",
       "-g",
       "-O",
-      "-I/nix/store/9qnach9x0yrlyw8rv97lkyjzsw6skinf-wxwidgets-3.2.6/lib/wx/include/gtk3-unicode-3.2",
-      "-I/nix/store/9qnach9x0yrlyw8rv97lkyjzsw6skinf-wxwidgets-3.2.6/include/wx-3.2",
+      "-I/nix/store/my0cx920gxxpq12pxiq2lsz537pybk48-wxwidgets-3.2.8.1/lib/wx/include/gtk3-unicode-3.2",
+      "-I/nix/store/my0cx920gxxpq12pxiq2lsz537pybk48-wxwidgets-3.2.8.1/include/wx-3.2",
       "-D_FILE_OFFSET_BITS=64",
       "-DWXUSINGDLL",
       "-D__WXGTK__",
@@ -14,20 +14,20 @@
       "-pthread",
       "-o",
       "main",
-      "./main.cpp"
+      "./src/main.cpp"
     ],
-    "directory": "/home/ramak/projects/pshash/gui",
-    "file": "/home/ramak/projects/pshash/gui/main.cpp",
-    "output": "/home/ramak/projects/pshash/gui/main"
+    "directory": "/home/ramak/projects/pshash-gui",
+    "file": "/home/ramak/projects/pshash-gui/src/main.cpp",
+    "output": "/home/ramak/projects/pshash-gui/main"
   },
   {
     "arguments": [
-      "/nix/store/gj9lra51hwhxnhz05jqk5lh03wipamv0-gcc-wrapper-14-20241116/bin/g++",
+      "/nix/store/67x7pknz0qa2j16x02idf0x98lpcspah-gcc-wrapper-14.3.0/bin/g++",
       "-c",
       "-g",
       "-O",
-      "-I/nix/store/9qnach9x0yrlyw8rv97lkyjzsw6skinf-wxwidgets-3.2.6/lib/wx/include/gtk3-unicode-3.2",
-      "-I/nix/store/9qnach9x0yrlyw8rv97lkyjzsw6skinf-wxwidgets-3.2.6/include/wx-3.2",
+      "-I/nix/store/my0cx920gxxpq12pxiq2lsz537pybk48-wxwidgets-3.2.8.1/lib/wx/include/gtk3-unicode-3.2",
+      "-I/nix/store/my0cx920gxxpq12pxiq2lsz537pybk48-wxwidgets-3.2.8.1/include/wx-3.2",
       "-D_FILE_OFFSET_BITS=64",
       "-DWXUSINGDLL",
       "-D__WXGTK__",
@@ -35,20 +35,20 @@
       "-pthread",
       "-o",
       "main",
-      "./inputs.cpp"
+      "./src/inputs.cpp"
     ],
-    "directory": "/home/ramak/projects/pshash/gui",
-    "file": "/home/ramak/projects/pshash/gui/inputs.cpp",
-    "output": "/home/ramak/projects/pshash/gui/main"
+    "directory": "/home/ramak/projects/pshash-gui",
+    "file": "/home/ramak/projects/pshash-gui/src/inputs.cpp",
+    "output": "/home/ramak/projects/pshash-gui/main"
   },
   {
     "arguments": [
-      "/nix/store/gj9lra51hwhxnhz05jqk5lh03wipamv0-gcc-wrapper-14-20241116/bin/g++",
+      "/nix/store/67x7pknz0qa2j16x02idf0x98lpcspah-gcc-wrapper-14.3.0/bin/g++",
       "-c",
       "-g",
       "-O",
-      "-I/nix/store/9qnach9x0yrlyw8rv97lkyjzsw6skinf-wxwidgets-3.2.6/lib/wx/include/gtk3-unicode-3.2",
-      "-I/nix/store/9qnach9x0yrlyw8rv97lkyjzsw6skinf-wxwidgets-3.2.6/include/wx-3.2",
+      "-I/nix/store/my0cx920gxxpq12pxiq2lsz537pybk48-wxwidgets-3.2.8.1/lib/wx/include/gtk3-unicode-3.2",
+      "-I/nix/store/my0cx920gxxpq12pxiq2lsz537pybk48-wxwidgets-3.2.8.1/include/wx-3.2",
       "-D_FILE_OFFSET_BITS=64",
       "-DWXUSINGDLL",
       "-D__WXGTK__",
@@ -56,20 +56,20 @@
       "-pthread",
       "-o",
       "main",
-      "./algorithm.c"
+      "./src/algorithm.c"
     ],
-    "directory": "/home/ramak/projects/pshash/gui",
-    "file": "/home/ramak/projects/pshash/gui/algorithm.c",
-    "output": "/home/ramak/projects/pshash/gui/main"
+    "directory": "/home/ramak/projects/pshash-gui",
+    "file": "/home/ramak/projects/pshash-gui/src/algorithm.c",
+    "output": "/home/ramak/projects/pshash-gui/main"
   },
   {
     "arguments": [
-      "/nix/store/gj9lra51hwhxnhz05jqk5lh03wipamv0-gcc-wrapper-14-20241116/bin/g++",
+      "/nix/store/67x7pknz0qa2j16x02idf0x98lpcspah-gcc-wrapper-14.3.0/bin/g++",
       "-c",
       "-g",
       "-O",
-      "-I/nix/store/9qnach9x0yrlyw8rv97lkyjzsw6skinf-wxwidgets-3.2.6/lib/wx/include/gtk3-unicode-3.2",
-      "-I/nix/store/9qnach9x0yrlyw8rv97lkyjzsw6skinf-wxwidgets-3.2.6/include/wx-3.2",
+      "-I/nix/store/my0cx920gxxpq12pxiq2lsz537pybk48-wxwidgets-3.2.8.1/lib/wx/include/gtk3-unicode-3.2",
+      "-I/nix/store/my0cx920gxxpq12pxiq2lsz537pybk48-wxwidgets-3.2.8.1/include/wx-3.2",
       "-D_FILE_OFFSET_BITS=64",
       "-DWXUSINGDLL",
       "-D__WXGTK__",
@@ -77,10 +77,10 @@
       "-pthread",
       "-o",
       "main",
-      "./mini-gmp.c"
+      "./src/mini-gmp.c"
     ],
-    "directory": "/home/ramak/projects/pshash/gui",
-    "file": "/home/ramak/projects/pshash/gui/mini-gmp.c",
-    "output": "/home/ramak/projects/pshash/gui/main"
+    "directory": "/home/ramak/projects/pshash-gui",
+    "file": "/home/ramak/projects/pshash-gui/src/mini-gmp.c",
+    "output": "/home/ramak/projects/pshash-gui/main"
   }
 ]
