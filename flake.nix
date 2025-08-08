@@ -10,13 +10,14 @@
         pshash-gui = pkgs.stdenv.mkDerivation {
           pname = "pshash-gui";
           version = "1.0";
-          src = ../gui;
+          src = ./src;
           buildInputs = with pkgs; [
               gcc
               wxGTK32
           ];
           buildPhase = ''
-              g++ main.cpp -O5 -o pshash-gui $(wx-config --cxxflags --libs)
+              # g++ main.cpp -O5 -o pshash-gui $(wx-config --cxxflags --libs)
+              g++ -g -O main.cpp inputs.cpp algorithm.c mini-gmp.c -o pshash-gui $(wx-config --cxxflags --libs)
           '';
           installPhase = ''
               mkdir -p $out/bin
