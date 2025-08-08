@@ -278,12 +278,6 @@ MyFrame::MyFrame() : wxFrame(nullptr, wxID_ANY, "pshash-gui") {
     menuBar->Append(menuInfo, "&Info");
     SetMenuBar(menuBar);
 
-    // CreateStatusBar();
-    // SetStatusText("The pshash pseudo-hash algorithm, version 1.0");
-
-    // wxNotebook* notebook = new wxNotebook(this, wxID_ANY);
-    // GetHashPanel* getHashPanel = new GetHashPanel(notebook);
-
     // Custom panel
     GetHashPanel* getHashPanel = new GetHashPanel(this);
 
