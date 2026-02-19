@@ -3,11 +3,6 @@
 #define MAXSIZE_SMALL 128
 #define MAXSIZE_BIG 2048
 
-const char sourceLower[27] = "ckapzfitqdxnwehrolmbyvsujg";
-const char sourceUpper[27] = "RQLIANBKJYVWPTEMCZSFDOGUHX";
-const char sourceSpecial[13] = "=!*@?$%#&-+^";
-const char sourceNumbers[11] = "1952074386";
-
 struct source {
     char* elts;
     unsigned long amount;

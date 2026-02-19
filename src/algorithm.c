@@ -1,14 +1,13 @@
 #include "algorithm.h"
-#include "mini-gmp.h"
+// #include "mini-gmp.h"
 // #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// void print (mpz_t x) {
-//     char x_str[MAXSIZE_BIG];
-//     mpz_get_str(x_str, 10, x);
-//     printf("%s\n", x_str);
-// }
+const char sourceLower[27] = "ckapzfitqdxnwehrolmbyvsujg";
+const char sourceUpper[27] = "RQLIANBKJYVWPTEMCZSFDOGUHX";
+const char sourceSpecial[13] = "=!*@?$%#&-+^";
+const char sourceNumbers[11] = "1952074386";
 
 // Tested
 unsigned long sum (const unsigned long arr[], const unsigned long size) {
@@ -233,20 +232,22 @@ void get_hash (char* to, const struct configuration *config, mpz_t key1, mpz_t k
 
 // Tested
 void parse_key (mpz_t to, const char* key) {
-    char base[MAXSIZE_SMALL] = {};
-    int i = 0;
-    for (i = 0; *key != '-' && *key != '\0'; i++) {
-        base[i] = *key;
-        key++;
-    }
-    base[i] = '\0';
-    mpz_set_str(to, base, 10);
-    if (*key == '\0')
-        return;
-    char exp[MAXSIZE_SMALL] = {};
-    strcpy(exp, key+1);
-    unsigned long exp_int = atoi(exp);
-    mpz_pow_ui(to, to, exp_int);
+    mpz_set_str(to, key, 10);
+
+    // char base[MAXSIZE_SMALL] = {};
+    // int i = 0;
+    // for (i = 0; *key != '-' && *key != '\0'; i++) {
+    //     base[i] = *key;
+    //     key++;
+    // }
+    // base[i] = '\0';
+    // mpz_set_str(to, base, 10);
+    // if (*key == '\0')
+    //     return;
+    // char exp[MAXSIZE_SMALL] = {};
+    // strcpy(exp, key+1);
+    // unsigned long exp_int = atoi(exp);
+    // mpz_pow_ui(to, to, exp_int);
 }
 
 // Tested
