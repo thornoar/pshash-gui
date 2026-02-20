@@ -15,7 +15,7 @@ void parse_key_mnemonic (mpz_t to, char* expr) {
     char buf[128]; int ind = 0;
     while (*expr != '\0' && *(expr + 1) != '\0') {
         if (*expr == ' ' || *(expr + 1) == ' ') {
-            expr += 2; continue;
+            expr += 1; continue;
         }
         short found = -1;
         for (int i = 0; i < 100; i++) {
