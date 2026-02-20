@@ -2,14 +2,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const int EXP_MOD = 250;
-
+const char modstr[202] = "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 const char mnemostr[201] = "orunelisitusofagumyuinerestireteleralirinesedecoroladicatavehesimepenilomamitocenahogehihapopanocipikemobabesafibosusobituvigirukugakoqulukidofefobudawevafuwafamupugowogudunuhuvoyizeyejujoxikaxejazije";
 
 void print (mpz_t x) {
     char x_str[MAXSIZE_BIG];
     mpz_get_str(x_str, 10, x);
     printf("%s\n", x_str);
+}
+
+void parse_key_mnemonic (mpz_t to, char* expr) {
+    char buf[128]; int ind = 0;
+    while (*expr != '\0' && *(expr + 1) != '\0') {
+        if (*expr == ' ' || *(expr + 1) == ' ') {
+            expr += 2; continue;
+        }
+        short found = -1;
+        for (int i = 0; i < 100; i++) {
+            if (*expr == mnemostr[2*i] && *(expr + 1) == mnemostr[2*i + 1]) {
+                found = i;
+                break;
+            }
+        }
+        if (found == -1) {
+            printf("ERROR: Unknown mnemonic syllable: %c%c\n", *expr, *(expr + 1));
+            return;
+        }
+
+        if (found < 10) {
+            buf[ind] = '0';
+            buf[ind + 1] = '0' + found;
+        } else {
+            buf[ind] = '0' + found/10;
+            buf[ind + 1] = '0' + found % 10;
+        }
+
+        ind += 2;
+        expr += 2;
+    }
+
+    buf[ind] = '\0';
+
+    mpz_set_str(to, buf, 10);
 }
 
 void parse_key_arithmetic (mpz_t to, mpz_t mod, char* expr, short mode) {
@@ -98,16 +132,16 @@ void parse_key_arithmetic (mpz_t to, mpz_t mod, char* expr, short mode) {
 
 int main (int argc, char** argv) {
     if (argc != 2) {
-        printf("ERROR: Expected only one argument.\n");
+        printf("ERROR: Expected one argument.\n");
         exit(1);
     }
 
-    char* pubkey = argv[1];
+    mpz_t public; mpz_init(public);
+    get_public_key(public, argv[1]);
 
     char keystr[2][128];
     
     for (int i = 0; i < 2; i++) {
-        fprintf(stderr, "KEY %i: ", i+1);
         for (int j = 0; j < 128; j++) {
             char cur = getc(stdin);
             if (cur == '\n') {
@@ -120,16 +154,39 @@ int main (int argc, char** argv) {
 
     mpz_t choice; mpz_init(choice);
     mpz_t shuffle; mpz_init(shuffle);
-    mpz_t mod; mpz_init(mod);
-    char mod_str[EXP_MOD + 1];
-    mod_str[0] = '1';
-    for (int i = 1; i < EXP_MOD; i++) {
-        mod_str[i] = '0';
+    mpz_t mod; mpz_init(mod); mpz_set_str(mod, modstr, 10);
+
+    if ('a' <= keystr[0][0] && keystr[0][0] <= 'z') {
+        parse_key_mnemonic(choice, keystr[0]);
+    } else {
+        parse_key_arithmetic(choice, mod, keystr[0], 3);
     }
-    mod_str[EXP_MOD] = '\0';
-    mpz_set_str(mod, mod_str, 10);
 
-    parse_key_arithmetic(choice, mod, keystr[0], 3);
-    parse_key_arithmetic(shuffle, mod, keystr[1], 3);
+    if ('a' <= keystr[1][0] && keystr[1][0] <= 'z') {
+        parse_key_mnemonic(shuffle, keystr[1]);
+    } else {
+        parse_key_arithmetic(shuffle, mod, keystr[1], 3);
+    }
 
+    mpz_clear(mod);
+
+    mpz_add(choice, choice, public);
+
+    char sourceLower[27] = "ckapzfitqdxnwehrolmbyvsujg";
+    char sourceUpper[27] = "RQLIANBKJYVWPTEMCZSFDOGUHX";
+    char sourceSpecial[13] = "=!*@?$%#&-+^";
+    char sourceNumbers[11] = "1952074386";
+    struct source srcs[4];
+    srcs[0].elts = sourceLower; srcs[0].amount = 8;
+    srcs[1].elts = sourceUpper; srcs[1].amount = 8;
+    srcs[2].elts = sourceSpecial; srcs[2].amount = 5;
+    srcs[3].elts = sourceNumbers; srcs[3].amount = 4;
+    struct configuration config;
+    config.srcs = srcs;
+    config.size = 4;
+
+    char hash[26];
+    get_hash(hash, &config, choice, shuffle);
+
+    printf("%s\n", hash);
 }

@@ -4,11 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-const char sourceLower[27] = "ckapzfitqdxnwehrolmbyvsujg";
-const char sourceUpper[27] = "RQLIANBKJYVWPTEMCZSFDOGUHX";
-const char sourceSpecial[13] = "=!*@?$%#&-+^";
-const char sourceNumbers[11] = "1952074386";
-
 // Tested
 unsigned long sum (const unsigned long arr[], const unsigned long size) {
     unsigned long sum = 0;
