@@ -136,8 +136,8 @@ int main (int argc, char** argv) {
         exit(1);
     }
 
-    mpz_t public; mpz_init(public);
-    get_public_key(public, argv[1]);
+    mpz_t pub; mpz_init(pub);
+    get_public_key(pub, argv[1]);
 
     char keystr[2][128];
     
@@ -170,7 +170,7 @@ int main (int argc, char** argv) {
 
     mpz_clear(mod);
 
-    mpz_add(choice, choice, public);
+    mpz_add(choice, choice, pub);
 
     char sourceLower[27] = "ckapzfitqdxnwehrolmbyvsujg";
     char sourceUpper[27] = "RQLIANBKJYVWPTEMCZSFDOGUHX";

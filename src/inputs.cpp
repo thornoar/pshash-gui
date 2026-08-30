@@ -4,6 +4,11 @@
 #include "mini-gmp.h"
 using namespace std;
 
+const char sourceLower[27] = "ckapzfitqdxnwehrolmbyvsujg";
+const char sourceUpper[27] = "RQLIANBKJYVWPTEMCZSFDOGUHX";
+const char sourceSpecial[13] = "=!*@?$%#&-+^";
+const char sourceNumbers[11] = "1952074386";
+
 wxPoint toScreenCoordinates(wxPoint coords, wxFrame* frame) {
     wxPoint screenCoordinates = frame->ClientToScreen(coords);
     return screenCoordinates;
